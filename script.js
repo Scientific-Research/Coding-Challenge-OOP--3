@@ -15,3 +15,18 @@ DATA CAR 1: 'Tesla' going at 120 km/h, with a charge of 23%!
 GOOD LUCK 😀
 
 */
+
+/* 
+1. Use a constructor function to implement an Electric Car (called EV) as a CHILD "class" of Car.
+Besides a make and current speed, the EV also has the current battery charge in % ('charge' property); 
+*/
+
+const Car = function (make, speed) {
+  this.make = make;
+  this.speed = speed;
+};
+
+const EV = function (make, speed, charge) {
+  Car.call(this, make, speed);
+  this.charge = charge;
+};
