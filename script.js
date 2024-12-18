@@ -39,6 +39,26 @@ const EV = class {
     this.charge = charge;
   }
 
+  /* 
+  3. Implement an 'accelerate' method that will increase the car's speed by 20, and decrease the charge by 1%. Then log a message like this: 'Tesla going at 140 km/h, with a charge of 22%';
+  */
+
+  // Implement accelerate method:
+  accelerate() {
+    console.log((this.speed += 20));
+
+    // console.log((this.charge -= 1 + "%"));
+    console.log(`${(this.charge -= 1)}%`);
+
+    console.log(
+      `${this.mark} is going at ${this.speed}km/h, with a charge of ${this.charge}%`
+    );
+  }
+
+  get chargeBattery() {
+    return this.charge;
+  }
+
   set chargeBattery(chargeTo) {
     this.charge = chargeTo;
   }
@@ -54,7 +74,7 @@ const EV = class {
 */
 
 // Linking Prototypes
-EV.prototype = Object.create(Car.prototype);
+// EV.prototype = Object.create(Car.prototype);
 
 // Add a method for EV => Electric Vehicles
 // EV.prototype.chargeBattery = function (chargeTo) {
