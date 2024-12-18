@@ -16,6 +16,7 @@ GOOD LUCK 😀
 
 */
 
+///////////////////////////////////// CAR /////////////////////////////////////
 const Car = function (make, speed) {
   this.make = make;
   this.speed = speed;
@@ -37,8 +38,11 @@ Car.prototype.brake = function () {
 
   console.log(`${this.make} is going at ${this.speed}km/h`);
 };
+///////////////////////////////////// CAR /////////////////////////////////////
 
+///////////////////////////////////// EV /////////////////////////////////////
 const EV = function (make, speed, charge) {
+  // We will not manually set the make and speed manually on this keyword, but we call them from parent class which is Car and at the same time bring the this keyword inside too!
   Car.call(this, make, speed);
 
   this.charge = charge;
@@ -49,6 +53,7 @@ EV.prototype = Object.create(Car.prototype);
 EV.prototype.chargeBattery = function (chargeTo) {
   this.charge = chargeTo;
 };
+///////////////////////////////////// EV /////////////////////////////////////
 
 // get chargeBattery() {
 //   return this.charge;
@@ -59,14 +64,15 @@ EV.prototype.chargeBattery = function (chargeTo) {
 // }
 
 const Tesla = new EV("Tesla", 120, 23);
-
-console.log(Tesla.accelerate());
-console.log(Tesla.accelerate());
-console.log(Tesla.accelerate());
-
-console.log(Tesla.brake());
-console.log(Tesla.brake());
-
-Tesla.chargeBattery = 90;
-
 console.log(Tesla);
+
+// console.log(Tesla.accelerate());
+// console.log(Tesla.accelerate());
+// console.log(Tesla.accelerate());
+
+// console.log(Tesla.brake());
+// console.log(Tesla.brake());
+
+// Tesla.chargeBattery = 90;
+
+// console.log(Tesla);
