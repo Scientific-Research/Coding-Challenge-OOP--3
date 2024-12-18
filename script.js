@@ -38,6 +38,10 @@ const EV = class {
     Car.call(this, make, speed);
     this.charge = charge;
   }
+
+  set chargeBattery(chargeTo) {
+    this.charge = chargeTo;
+  }
 };
 
 // const EV = function (make, speed, charge) {
