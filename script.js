@@ -48,6 +48,7 @@ const EV = function (make, speed, charge) {
   this.charge = charge;
 };
 
+// Linking the Prototypes:
 EV.prototype = Object.create(Car.prototype);
 
 EV.prototype.chargeBattery = function (chargeTo) {
@@ -64,7 +65,7 @@ EV.prototype.chargeBattery = function (chargeTo) {
 // }
 
 const Tesla = new EV("Tesla", 120, 23);
-console.log(Tesla);
+// console.log(Tesla); // EV {make: 'Tesla', speed: 120, charge: 23}
 
 // console.log(Tesla.accelerate());
 // console.log(Tesla.accelerate());
@@ -73,6 +74,7 @@ console.log(Tesla);
 // console.log(Tesla.brake());
 // console.log(Tesla.brake());
 
-// Tesla.chargeBattery = 90;
+Tesla.chargeBattery(90);
+console.log(Tesla); // EV {make: 'Tesla', speed: 120, charge: 90}
 
 // console.log(Tesla);
