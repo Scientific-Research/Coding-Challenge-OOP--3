@@ -21,12 +21,38 @@ GOOD LUCK 😀
 Besides a make and current speed, the EV also has the current battery charge in % ('charge' property); 
 */
 
-const Car = function (make, speed) {
-  this.make = make;
-  this.speed = speed;
+// const Car = function (make, speed) {
+//   this.make = make;
+//   this.speed = speed;
+// };
+
+const Car = class {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
 };
 
-const EV = function (make, speed, charge) {
-  Car.call(this, make, speed);
-  this.charge = charge;
+const EV = class {
+  constructor(make, speed, charge) {
+    Car.call(this, make, speed);
+    this.charge = charge;
+  }
 };
+
+// const EV = function (make, speed, charge) {
+//   Car.call(this, make, speed);
+//   this.charge = charge;
+// };
+
+/* 
+2. Implement a 'chargeBattery' method which takes an argument 'chargeTo' and sets the battery charge to 'chargeTo';
+*/
+
+// Linking Prototypes
+EV.prototype = Object.create(Car.prototype);
+
+// Add a method for EV => Electric Vehicles
+// EV.prototype.chargeBattery = function (chargeTo) {
+//   this.speed
+// };
