@@ -22,21 +22,17 @@ const Car = function (make, speed) {
   this.speed = speed;
 };
 
+// PROTOTYPAL INHERITANCE:
 Car.prototype.accelerate = function () {
-  console.log((this.speed += 20));
+  console.log(`Speed after acceleration: ${(this.speed += 10)} km/h`);
 
-  // console.log((this.charge -= 1 + "%"));
-  console.log(`${(this.charge -= 1)}%`);
-
-  console.log(
-    `${this.make} is going at ${this.speed}km/h, with a charge of ${this.charge}%`
-  );
+  console.log(`${this.make} is going at ${this.speed} km/h`);
 };
 
 Car.prototype.brake = function () {
-  console.log((this.speed -= 5));
+  console.log(`Speed after brake: ${(this.speed -= 5)} km/h`);
 
-  console.log(`${this.make} is going at ${this.speed}km/h`);
+  console.log(`${this.make} is going at ${this.speed} km/h`);
 };
 ///////////////////////////////////// CAR /////////////////////////////////////
 
@@ -48,21 +44,24 @@ const EV = function (make, speed, charge) {
   this.charge = charge;
 };
 
-// Linking the Prototypes:
+// Linking the Prototypes => and Now EV as Child class has access to all the properties and methods of the Car class as parent class!
 EV.prototype = Object.create(Car.prototype);
 
 EV.prototype.chargeBattery = function (chargeTo) {
   this.charge = chargeTo;
 };
+
+Car.prototype.accelerate = function () {
+  console.log(`Speed after acceleration: ${(this.speed += 20)} km/h`);
+
+  // console.log((this.charge -= 1 + "%")); OR the following:
+  console.log(`Charge after acceleration: ${--this.charge}%`);
+
+  console.log(
+    `${this.make} is going at ${this.speed}km/h, with a charge of ${this.charge}%`
+  );
+};
 ///////////////////////////////////// EV /////////////////////////////////////
-
-// get chargeBattery() {
-//   return this.charge;
-// }
-
-// set chargeBattery(chargeTo) {
-//   this.charge = chargeTo;
-// }
 
 const Tesla = new EV("Tesla", 120, 23);
 // console.log(Tesla); // EV {make: 'Tesla', speed: 120, charge: 23}
@@ -71,10 +70,10 @@ const Tesla = new EV("Tesla", 120, 23);
 // console.log(Tesla.accelerate());
 // console.log(Tesla.accelerate());
 
-// console.log(Tesla.brake());
-// console.log(Tesla.brake());
-
 Tesla.chargeBattery(90);
-console.log(Tesla); // EV {make: 'Tesla', speed: 120, charge: 90}
 
+Tesla.brake(); // Tesla is going at 115km/h
+Tesla.accelerate(); // Tesla is going at 135km/h, with a charge of 89%
+
+console.log(Tesla); // EV {make: 'Tesla', speed: 120, charge: 90}
 // console.log(Tesla);
