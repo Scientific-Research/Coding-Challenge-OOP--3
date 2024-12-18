@@ -17,6 +17,10 @@ GOOD LUCK 😀
 */
 
 ///////////////////////////////////// CAR /////////////////////////////////////
+// CODING CHALLENGE IS ABOUT: ONE CLASS INHERIT FROM ANOTHER CLASS USING TWO FOLLOWING FUNCTIONS:
+// 1. CONSTRUCTOR FUNCTIONS AND 
+// 2. Object.create() Function
+
 const Car = function (make, speed) {
   this.make = make;
   this.speed = speed;
