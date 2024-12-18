@@ -44,18 +44,18 @@ const EV = function (make, speed, charge) {
   this.charge = charge;
 };
 
-// Linking the Prototypes => and Now EV as Child class has access to all the properties and methods of the Car class as parent class!
+// Linking the Prototypes => and Now EV as Child class has access(inherits all the) to all the properties and methods of the Car class as parent class!
 EV.prototype = Object.create(Car.prototype);
 
 EV.prototype.chargeBattery = function (chargeTo) {
   this.charge = chargeTo;
 };
 
-Car.prototype.accelerate = function () {
+EV.prototype.accelerate = function () {
   console.log(`Speed after acceleration: ${(this.speed += 20)} km/h`);
 
   // console.log((this.charge -= 1 + "%")); OR the following:
-  console.log(`Charge after acceleration: ${--this.charge}%`);
+  console.log(`Charge after acceleration: ${--this.charge}%`); // --behind the charge to see the result immediately!
 
   console.log(
     `${this.make} is going at ${this.speed}km/h, with a charge of ${this.charge}%`
@@ -66,14 +66,14 @@ Car.prototype.accelerate = function () {
 const Tesla = new EV("Tesla", 120, 23);
 // console.log(Tesla); // EV {make: 'Tesla', speed: 120, charge: 23}
 
-// console.log(Tesla.accelerate());
-// console.log(Tesla.accelerate());
-// console.log(Tesla.accelerate());
-
-Tesla.chargeBattery(90);
+Tesla.chargeBattery(90); // set the 90% of charge to the Tesla as Child class here!
 
 Tesla.brake(); // Tesla is going at 115km/h
 Tesla.accelerate(); // Tesla is going at 135km/h, with a charge of 89%
-
 console.log(Tesla); // EV {make: 'Tesla', speed: 120, charge: 90}
-// console.log(Tesla);
+
+// NOTE: WHEN THERE ARE TWO PROPERTIES OR METHODS WITH THE SAME NAME IN PROTOTYPE CHAIN LIKE WHAT WE HAVE HERE AS ACCELERATE METHOD FOR BOTH CAR AS PARENT CLASS AND EV AS CHILD CLASS, JS TAKES THE FIRST ONE THAT APPAERS IN THE CHAIN!
+
+// NOTE: In this case, a CHILD CLASS can overwrite a method that indeed it inherited from parent class! It means the accelerate() method in EV Class as Child here will overwrite the accelerate() method in Car Class as Parent!
+
+// NOTE: EVEN without the accelerate() method in EV class, We will have the accelerate() method ihherited from Car class because of prototype inheritance => EV.prototype = Object.create(Car.prototype); The DIFFERENCE would be: The accelerate() method in Car class doesn't have charge property!
