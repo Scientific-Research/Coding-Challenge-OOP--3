@@ -18,7 +18,7 @@ GOOD LUCK 😀
 
 ///////////////////////////////////// CAR /////////////////////////////////////
 // CODING CHALLENGE IS ABOUT: ONE CLASS INHERIT FROM ANOTHER CLASS USING TWO FOLLOWING FUNCTIONS:
-// 1. CONSTRUCTOR FUNCTIONS AND 
+// 1. CONSTRUCTOR FUNCTIONS AND
 // 2. Object.create() Function
 
 const Car = function (make, speed) {
@@ -78,6 +78,6 @@ console.log(Tesla); // EV {make: 'Tesla', speed: 120, charge: 90}
 
 // NOTE: WHEN THERE ARE TWO PROPERTIES OR METHODS WITH THE SAME NAME IN PROTOTYPE CHAIN LIKE WHAT WE HAVE HERE AS ACCELERATE METHOD FOR BOTH CAR AS PARENT CLASS AND EV AS CHILD CLASS, JS TAKES THE FIRST ONE THAT APPAERS IN THE CHAIN!
 
-// NOTE: In this case, a CHILD CLASS can overwrite a method that indeed it inherited from parent class! It means the accelerate() method in EV Class as Child here will overwrite the accelerate() method in Car Class as Parent!
+// NOTE: In this case, a CHILD CLASS can overwrite a method that indeed it inherited from parent class! It means the accelerate() method in EV Class as Child here will overwrite the accelerate() method in Car Class as Parent => and this is actually the concept of POLYMORPHISM!
 
 // NOTE: EVEN without the accelerate() method in EV class, We will have the accelerate() method ihherited from Car class because of prototype inheritance => EV.prototype = Object.create(Car.prototype); The DIFFERENCE would be: The accelerate() method in Car class doesn't have charge property!
